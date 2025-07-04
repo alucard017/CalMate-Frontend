@@ -22,10 +22,10 @@ Built with ❤️ using FastAPI, LangGraph, and Streamlit.\n\n
 👨‍💻 Developed by Apurba
 """)
 
-# Optional user info inputs
-st.subheader("👤 Who is booking this?")
-name = st.text_input("Name", placeholder="e.g., Apurba")
-email = st.text_input("Email", placeholder="e.g., user@example.com")
+# # Optional user info inputs
+# st.subheader("👤 Who is booking this?")
+# name = st.text_input("Name", placeholder="e.g., Apurba")
+# email = st.text_input("Email", placeholder="e.g., user@example.com")
 
 # Chat history
 if "messages" not in st.session_state:
@@ -42,26 +42,22 @@ if user_input:
     st.chat_message("user").write(user_input)
     st.session_state.messages.append({"role": "user", "content": user_input})
 
-    if not name or not email:
-        reply = "⚠️ Please provide your name and email before booking."
-        st.chat_message("assistant").write(reply)
-        st.session_state.messages.append({"role": "assistant", "content": reply})
-    else:
-        with st.spinner("🔍 Checking availability and booking..."):
-            try:
-                response = requests.post(FASTAPI_API_URL, json={"user_input": user_input})
+   
+    with st.spinner("🔍 Checking availability and booking..."):
+        try:
+            response = requests.post(FASTAPI_API_URL, json={"user_input": user_input})
 
-                if response.status_code == 200:
-                    data = response.json()
-                    reply = (
+            if response.status_code == 200:
+                data = response.json()
+                reply = (
                         f"✅ **Booking confirmed!**\n\n"
                         f"🔗 [Click to view event details]({data['calendar_link']})\n\n"
                     )
-                else:
-                    reply = f"❌ Error: {response.json()['detail']}"
+            else:
+                reply = f"❌ Error: {response.json()['detail']}"
 
-            except requests.exceptions.RequestException as e:
-                reply = f"⚠️ Server error: {e}"
+        except requests.exceptions.RequestException as e:
+            reply = f"⚠️ Server error: {e}"
 
         st.chat_message("assistant").markdown(reply)
         st.session_state.messages.append({"role": "assistant", "content": reply})
