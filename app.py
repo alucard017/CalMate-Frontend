@@ -4,7 +4,7 @@ import re
 from datetime import timedelta
 from dateparser import parse
 
-FASTAPI_API_URL = "http://backend:8000/book"
+FASTAPI_API_URL = "https://calmate-backend.onrender.com/book"
 
 st.set_page_config(page_title="CalMate - Booking Assistant", layout="centered")
 st.title("📅 CalMate – Smart Calendar Assistant")
