@@ -1,0 +1,6 @@
+streamlit
+python-dotenv
+httpx
+pytz
+google-generativeai
+dateparser
