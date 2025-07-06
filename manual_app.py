@@ -1,8 +1,6 @@
 import streamlit as st
 import requests
-import re
-from datetime import timedelta
-from dateparser import parse
+
 
 FASTAPI_API_URL = "https://calmate-backend.onrender.com/book"
 
