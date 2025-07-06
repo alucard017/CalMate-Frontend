@@ -26,11 +26,10 @@ Built with ❤️ using FastAPI, LangGraph, and Streamlit.\n\n
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Previous chat messages
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).markdown(msg["content"])
 
-# Input
+# User Input
 user_input = st.chat_input("💬 When would you like to book a meeting?")
 
 if user_input:
