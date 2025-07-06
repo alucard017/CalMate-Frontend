@@ -22,11 +22,6 @@ Built with ❤️ using FastAPI, LangGraph, and Streamlit.\n\n
 👨‍💻 Developed by Apurba
 """)
 
-# # Optional user info inputs
-# st.subheader("👤 Who is booking this?")
-# name = st.text_input("Name", placeholder="e.g., Apurba")
-# email = st.text_input("Email", placeholder="e.g., user@example.com")
-
 # Chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
