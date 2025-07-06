@@ -1,8 +1,6 @@
 import streamlit as st
 import requests
-import re
-from datetime import timedelta
-from dateparser import parse
+
 
 FASTAPI_API_URL = "https://calmate-backend.onrender.com/book"
 
@@ -22,20 +20,14 @@ Built with ❤️ using FastAPI, LangGraph, and Streamlit.\n\n
 👨‍💻 Developed by Apurba
 """)
 
-# # Optional user info inputs
-# st.subheader("👤 Who is booking this?")
-# name = st.text_input("Name", placeholder="e.g., Apurba")
-# email = st.text_input("Email", placeholder="e.g., user@example.com")
-
 # Chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Previous chat messages
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).markdown(msg["content"])
 
-# Input
+# User Input
 user_input = st.chat_input("💬 When would you like to book a meeting?")
 
 if user_input:
